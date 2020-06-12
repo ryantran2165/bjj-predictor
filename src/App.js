@@ -21,8 +21,7 @@ class App extends Component {
   };
 
   getFighters = async () => {
-    const query =
-      "http://sample-app2-dev.us-west-1.elasticbeanstalk.com/fighters";
+    const query = "https://bjj.ryanlongtran.com/fighters";
     const res = await fetch(query);
 
     // Get all fighters in alphabetical
@@ -45,7 +44,7 @@ class App extends Component {
     e.target.blur();
 
     const query =
-      "http://sample-app2-dev.us-west-1.elasticbeanstalk.com/predict?id_1=" +
+      "https://bjj.ryanlongtran.com/predict?id_1=" +
       this.state.fighter1["id"] +
       "&id_2=" +
       this.state.fighter2["id"];
