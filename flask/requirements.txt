@@ -1,0 +1,5 @@
+boto3==1.13.24
+Flask==1.1.2
+Flask-Cors==3.0.8
+simplejson==3.17.0
+tensorflow==2.2.0
