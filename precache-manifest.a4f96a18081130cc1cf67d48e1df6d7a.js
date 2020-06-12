@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "9ba26965f8c87ab6c0027ee04531df33",
+    "revision": "2d446e72ce9b57383f748a6a749e05c6",
     "url": "/bjj-predictor/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/bjj-predictor/static/css/2.829c9cb5.chunk.css"
   },
   {
-    "revision": "1f41531c0323d3b817d3",
+    "revision": "0c97c24a8b6535d0dae1",
     "url": "/bjj-predictor/static/css/main.5dfaeab6.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/bjj-predictor/static/js/2.03f34221.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "1f41531c0323d3b817d3",
-    "url": "/bjj-predictor/static/js/main.3cfe64bc.chunk.js"
+    "revision": "0c97c24a8b6535d0dae1",
+    "url": "/bjj-predictor/static/js/main.25fd8eb1.chunk.js"
   },
   {
     "revision": "58af35bf6069211997cf",
