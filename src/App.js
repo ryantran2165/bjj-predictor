@@ -3,6 +3,7 @@ import Title from "./components/title";
 import Description from "./components/description";
 import Button from "./components/button";
 import Select from "./components/select";
+import GithubCorner from "react-github-corner";
 
 class App extends Component {
   constructor(props) {
@@ -28,7 +29,6 @@ class App extends Component {
     res.json().then((res) => {
       res.sort((a, b) => a["first_name"].localeCompare(b["first_name"]));
       this.setState({ fighters: res, fighter1: res[0], fighter2: res[0] });
-      console.log(res);
     });
   };
 
@@ -318,6 +318,12 @@ class App extends Component {
           </div>
         </div>
         {this.getPredictionInfo()}
+        <GithubCorner
+          href="https://github.com/ryantran2165/bjj-predictor"
+          bannerColor="#222"
+          octoColor="#7fffd4"
+          target="_blank"
+        />
       </div>
     );
   }
