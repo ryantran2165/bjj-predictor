@@ -1,5 +1,6 @@
 import json
 
+
 # Read fighters json file
 with open('bjj_fighters.json') as f:
     fighters = json.load(f)

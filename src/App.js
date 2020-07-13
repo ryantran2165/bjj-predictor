@@ -181,6 +181,11 @@ class App extends Component {
       lossByOther = (lossByOther * 100).toFixed(1);
       draw = (draw * 100).toFixed(1);
 
+      // VS history
+      let vsWins = 0;
+      let vsLosses = 0;
+      let vsDraws = 0;
+
       let history = <React.Fragment></React.Fragment>;
       if (vsHistory.length > 0) {
         // Sort history by competition year
@@ -190,10 +195,13 @@ class App extends Component {
           let fightWinner;
           if (fight["win_loss"] === "W") {
             fightWinner = this.getFighterLink(this.state.fighter1);
+            vsWins++;
           } else if (fight["win_loss"] === "L") {
             fightWinner = this.getFighterLink(this.state.fighter2);
+            vsLosses++;
           } else {
             fightWinner = "DRAW";
+            vsDraws++;
           }
 
           return (
@@ -209,6 +217,36 @@ class App extends Component {
         });
       }
 
+      let historySummary;
+      if (vsHistory.length === 0) {
+        historySummary = "No VS history";
+      } else {
+        if (vsWins === vsLosses) {
+          historySummary =
+            "Fighters are tied " +
+            vsWins +
+            "-" +
+            vsLosses +
+            "-" +
+            vsDraws +
+            " (W-L-D)";
+        } else {
+          historySummary = (
+            <span>
+              {this.getFighterLink(
+                vsWins > vsLosses ? this.state.fighter1 : this.state.fighter2
+              )}{" "}
+              leads{" "}
+              {this.getFighterLink(
+                vsWins > vsLosses ? this.state.fighter2 : this.state.fighter1
+              )}{" "}
+              {vsWins > vsLosses ? vsWins : vsLosses}-
+              {vsWins > vsLosses ? vsLosses : vsWins}-{vsDraws} (W-L-D)
+            </span>
+          );
+        }
+      }
+
       predictionInfo = (
         <React.Fragment>
           <div className="row justify-content-center pt-5">
@@ -217,11 +255,6 @@ class App extends Component {
             </div>
           </div>
           <div className="row justify-content-center pt-3">
-            <div className="col">
-              <h5>Probability of draw: {draw}%</h5>
-            </div>
-          </div>
-          <div className="row justify-content-center">
             <div className="col col-lg-6 col-12">
               <h5>Overall probability of winning: {totalWin}%</h5>
               <h5>Probability of winning by submission: {winBySub}%</h5>
@@ -233,7 +266,17 @@ class App extends Component {
               <h5>Probability of losing by other means: {lossByOther}%</h5>
             </div>
           </div>
-          <div className="row justify-content-center pt-5 pb-5">
+          <div className="row justify-content-center">
+            <div className="col">
+              <h5>Probability of draw: {draw}%</h5>
+            </div>
+          </div>
+          <div className="row justify-content-center pt-5 pb-3">
+            <div className="col">
+              <h5>{historySummary}</h5>
+            </div>
+          </div>
+          <div className="row justify-content-center pb-5">
             <div className="col">
               <div className="table-responsive">
                 <table className="table table-striped table-hover text-left">

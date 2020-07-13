@@ -1,6 +1,5 @@
 import json
-import numpy as np
-import random
+import csv
 import remove_duplicates
 import clean_history
 import get_vs_record
@@ -16,10 +15,14 @@ def run():
     for fighter in fighters:
         fighters_dict[fighter['id']] = fighter
 
-    # Create examples and labels lists
-    examples = []
-    labels = []
-
+    # Create data to convert to csv
+    data = []
+    
+    # Add csv headers
+    headers = ['wins', 'wins_by_sub', 'losses', 'losses_by_sub', 'opponent_wins', 'opponent_wins_by_sub', 'opponent_losses', 'opponent_losses_by_sub',
+               'wins_vs_opponent', 'wins_vs_opponent_by_sub', 'losses_vs_opponent', 'losses_vs_opponent_by_sub', 'result']
+    data.append(headers)
+    
     # Create an example for each fight
     for fighter in fighters:
         # Dict for record vs opponents
@@ -65,13 +68,6 @@ def run():
                 # Add record to all records
                 records_vs_opponents[opponent_id] = record
 
-            # Create new example
-            example = [wins, wins_by_sub, losses, losses_by_sub, opponent_wins, opponent_wins_by_sub, opponent_losses, opponent_losses_by_sub,
-                       record['wins_vs_opponent'], record['wins_vs_opponent_by_sub'], record['losses_vs_opponent'], record['losses_vs_opponent_by_sub']]
-
-            # Add example
-            examples.append(example)
-
             # Get result of the fight
             if fight['win_loss'] == 'W':
                 if get_vs_record.is_by_submission(fight['method']):
@@ -86,27 +82,17 @@ def run():
             elif fight['win_loss'] == 'D':
                 result = 4
 
-            # Add label
-            labels.append(result)
+            # Create new example
+            example = [wins, wins_by_sub, losses, losses_by_sub, opponent_wins, opponent_wins_by_sub, opponent_losses, opponent_losses_by_sub,
+                       record['wins_vs_opponent'], record['wins_vs_opponent_by_sub'], record['losses_vs_opponent'], record['losses_vs_opponent_by_sub'], result]
 
-    # Zip to shuffle, then unzip
-    zipped = list(zip(examples, labels))
-    random.shuffle(zipped)
-    unzipped = list(zip(*zipped))
-    examples = unzipped[0]
-    labels = unzipped[1]
+            # Add example to data
+            data.append(example)
 
-    # Split into 80% train and 20% test
-    num_train = int(len(examples) * 0.8)
-    train_examples = examples[:num_train]
-    train_labels = labels[:num_train]
-    test_examples = examples[num_train:]
-    test_labels = labels[num_train:]
-
-    # Write to npz file
-    np.savez('bjj.npz', train_examples=train_examples, train_labels=train_labels,
-             test_examples=test_examples, test_labels=test_labels)
-    print('Created: bjj.npz')
+    with open('bjj_data.csv', 'w', newline='') as f:
+        writer = csv.writer(f)
+        writer.writerows(data)
+        print('Created: bjj_data.csv')
 
 
 # Creates the bjj data

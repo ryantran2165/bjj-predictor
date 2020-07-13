@@ -1,4 +1,5 @@
 
+
 def run(fighter, opponent_id):
     # Create new record
     record = {
