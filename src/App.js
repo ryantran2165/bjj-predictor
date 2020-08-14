@@ -251,24 +251,24 @@ class App extends Component {
         <React.Fragment>
           <div className="row justify-content-center pt-5">
             <div className="col">
-              <h3 className="font-weight-bold">Winner: {winner}</h3>
+              <h4 className="font-weight-bold">Winner: {winner}</h4>
             </div>
           </div>
           <div className="row justify-content-center pt-3">
             <div className="col col-lg-6 col-12">
-              <h5>Overall probability of winning: {totalWin}%</h5>
-              <h5>Probability of winning by submission: {winBySub}%</h5>
-              <h5>Probability of winning by other means: {winByOther}%</h5>
+              <h5>P(win): {totalWin}%</h5>
+              <h5>P(win by submission): {winBySub}%</h5>
+              <h5>P(win by other): {winByOther}%</h5>
             </div>
             <div className="col col-lg-6 col-12">
-              <h5>Overall probability of losing: {totalLoss}%</h5>
-              <h5>Probability of losing by submission: {lossBySub}%</h5>
-              <h5>Probability of losing by other means: {lossByOther}%</h5>
+              <h5>P(lose): {totalLoss}%</h5>
+              <h5>P(lose by submission): {lossBySub}%</h5>
+              <h5>P(lose by other): {lossByOther}%</h5>
             </div>
           </div>
           <div className="row justify-content-center">
             <div className="col">
-              <h5>Probability of draw: {draw}%</h5>
+              <h5>P(draw): {draw}%</h5>
             </div>
           </div>
           <div className="row justify-content-center pt-5 pb-3">
