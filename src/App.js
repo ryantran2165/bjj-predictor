@@ -302,7 +302,7 @@ class App extends Component {
             <h1 className="font-weight-bold">BJJ Predictor</h1>
             <h5>
               Predicts the winner of Brazilian Jiu-Jitsu matches using deep
-              neural networks
+              neural networks.
               <br />
               Choose two fighters and predict who would win in a BJJ match!
             </h5>
