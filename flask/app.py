@@ -8,9 +8,11 @@ import os
 import boto3
 import get_vs_record
 from decimal import Decimal
+from simplejson import JSONEncoder
 
 
-application = app = Flask(__name__)
+app = Flask(__name__)
+app.json_encoder = JSONEncoder
 CORS(app)
 
 

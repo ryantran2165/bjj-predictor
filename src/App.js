@@ -3,6 +3,8 @@ import Button from "./components/button";
 import Select from "./components/select";
 import GithubCorner from "react-github-corner";
 
+const API = "https://bjj-predictor.herokuapp.com";
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -20,7 +22,7 @@ class App extends Component {
   };
 
   getFighters = async () => {
-    const query = "https://bjj.ryanlongtran.com/fighters";
+    const query = `${API}/fighters`;
     const res = await fetch(query);
 
     // Get all fighters in alphabetical
@@ -39,11 +41,7 @@ class App extends Component {
   };
 
   predict = async () => {
-    const query =
-      "https://bjj.ryanlongtran.com/predict?id_1=" +
-      this.state.fighter1["id"] +
-      "&id_2=" +
-      this.state.fighter2["id"];
+    const query = `${API}/predict?id_1=${this.state.fighter1["id"]}&id_2=${this.state.fighter2["id"]}`;
     const res = await fetch(query);
 
     // Get prediction and show it
