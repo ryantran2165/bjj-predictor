@@ -1,4 +1,4 @@
-# BJJ Predictor
+# BJJ Predictor (DEFUNCT)
 
 • Built full-stack web app with React frontend and Flask REST API backend that predicts the winner of Brazilian Jiu-Jitsu
 matches with 70% accuracy using deep neural networks  
